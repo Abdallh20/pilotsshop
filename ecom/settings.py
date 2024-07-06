@@ -27,8 +27,9 @@ SECRET_KEY = 'django-insecure-k7bo=fy7dx*&oz0l$$y^3jjb_d+o-(@_hv+a-#!y_gu1w=1gc9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pilotsshop-production-4339.up.railway.app','localhost','127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://pilotsshop-production-4339.up.railway.app']
+ALLOWED_HOSTS = ['pilotsshop-production-4339.up.railway.app','pilotsshop-production.up.railway.app','localhost','127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [
+    'https://pilotsshop-production-4339.up.railway.app', 'https://pilotsshop-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
