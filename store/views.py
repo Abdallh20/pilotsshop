@@ -164,7 +164,7 @@ def login_user(request):
 		return render(request, 'login.html', {})
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html',{})
 
 
 def register_user(request):
