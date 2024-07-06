@@ -1,0 +1,70 @@
+{% load static %}
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<div class="bg-secondary">‎
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>your cart</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <div class="text-center ">
+        <img width="400"
+            src="https://cdn.discordapp.com/attachments/931548100378652682/1257153887463411883/20240701_050017.png?ex=66835f4b&is=66820dcb&hm=3eff4836ab36ea4abbfefde56526f00b44e3de6d35d01bdc856302fae0a46d24&"
+            alt="">
+    </div>
+    <center>
+        <header class="bg-secondary">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shopping Cart</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">View Your Cart...</p>
+                </div>
+                <br>
+            </div>
+        </header>
+    </center>
+</div>
+<html lang="en">
+
+{% if messages %}
+
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show,bg-black" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+
+{% block blockname %}
+
+
+
+{% endblock blockname %}
+
+<body>
+    <!-- Navigation-->
+
+    <!-- Footer-->
+    <footer class="py-5 bg-secondary">
+        <div class="">
+            <p class="m-0 text-center text-white">Copyright &copy; Sonic 2024</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>
