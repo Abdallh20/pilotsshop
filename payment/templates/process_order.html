@@ -13,7 +13,7 @@
 <br />
 <div class="container">
     <div class="row">
-    {% if payment_method == cod %}
+    {% if payment_method == online %}
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-header">
@@ -64,7 +64,12 @@
                 </div>
             </div>
             <br /><br />
-
+            <label for="payment_method">Payment Method:</label><br>
+            <select id="payment_method" name="payment_method" required>
+                <option value="cod">Cash on Delivery</option>
+                <option value="online">Online Payment</option>
+            </select><br><br>
+            {% if payment_method == online %}
             <div class="card">
                 <div class="card-header">
                     Billing Info
@@ -79,11 +84,6 @@
             <br />
             
             
-            <label for="payment_method">Payment Method:</label><br>
-        <select id="payment_method" name="payment_method" required>
-            <option value="cod">Cash on Delivery</option>
-            <option value="online">Online Payment</option>
-        </select><br><br>
             {% endif %}
                 
 
