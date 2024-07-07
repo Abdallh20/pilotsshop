@@ -47,6 +47,6 @@ class product(models.Model):
     image = models.ImageField(upload_to='photos/%y/%m/%d')
     is_sale = models.BooleanField(default=False)
     sale_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    def __str_(self):
+    def __str__(self):
         return self.name
 
