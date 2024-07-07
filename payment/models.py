@@ -5,6 +5,11 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 import datetime
 
+PAYMENT_METHOD_CHOICES = (
+        ('cash', 'Cash'),
+		('credit','credit'),
+    )
+
 
 class ShippingAddress(models.Model):
 	user = models.ForeignKey(
@@ -17,6 +22,8 @@ class ShippingAddress(models.Model):
 	shipping_state = models.CharField(max_length=255, null=True, blank=True)
 	shipping_zipcode = models.CharField(max_length=255, null=True, blank=True)
 	shipping_country = models.CharField(max_length=255)
+	payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES)
+
 
 	# Don't pluralize address
 
@@ -51,7 +58,8 @@ class Order(models.Model):
 	date_ordered = models.DateTimeField(auto_now_add=True)
 	shipped = models.BooleanField(default=False)
 	date_shipped = models.DateTimeField(blank=True, null=True)
-	payment= models.CharField(max_length=20,default='cod')
+	payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES,default='cash')
+
 
 	
 
@@ -77,9 +85,14 @@ class OrderItem(models.Model):
 	product = models.ForeignKey(product, on_delete=models.CASCADE, null=True)
 	user = models.ForeignKey(
 		User, on_delete=models.CASCADE, null=True, blank=True)
-
 	quantity = models.PositiveBigIntegerField(default=1)
 	price = models.DecimalField(max_digits=7, decimal_places=2)
 
 	def __str__(self):
 		return f'Order Item - {str(self.id)}'
+
+
+
+
+
+

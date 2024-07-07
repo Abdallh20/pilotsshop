@@ -23,9 +23,9 @@
                     {% for product in cart_products %}
                     {{ product.name }}:
                     {% if product.is_sale %}
-                    {{ product.sale_price }}.LE
+                    ${{ product.sale_price }}
                     {% else %}
-                    ${{ product.price }}.LE
+                    ${{ product.price }}
                     {% endif %}
 
                     <br />
@@ -38,7 +38,7 @@
                     <br /><br />
 
                     {% endfor %}
-                    Total:{{ totals }}.LE
+                    Total: ${{ totals }}
                     <br /><br />
                     <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Update Items</a>
                 </div>
@@ -48,27 +48,28 @@
                 <div class="card-header">
                     Shipping Info
                 </div>
+                
+                    
                 <div class="card-body">
-                    <form method="POST" action="{% url 'billing_info' %}">
+                    <form method="POST" action="{% url 'process_order' %}">
                         {% csrf_token %}
-                        {{ shipping_form.as_p }}
-
-                </div>
-            </div>
-            <br />
-
-            <button type="submit" class="btn btn-secondary" ">
-                Continue To Billing
-            </button>
-
-            </form>
+                        {{ shipping_form.as_p}}
+                    
+                        </div>
+                        </div>
+                        <br />
+                    
+                    
+                        <button type="submit" class="btn btn-secondary">
+                            Pay Now
+                        </button>
+                    </form>
             <br /><br />
 
 
         </div>
     </div>
 </div>
-
 
 
 

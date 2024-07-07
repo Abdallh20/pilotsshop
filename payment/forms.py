@@ -1,3 +1,4 @@
+
 from django import forms
 from .models import ShippingAddress,Order
 
@@ -19,13 +20,18 @@ class ShippingForm(forms.ModelForm):
 		attrs={'class': 'form-control', 'placeholder': 'Zipcode'}), required=False)
 	shipping_country = forms.CharField(label="", widget=forms.TextInput(
 		attrs={'class': 'form-control', 'placeholder': 'Country'}), required=True)
+    
 
+	
 	class Meta:
 		model = ShippingAddress
 		fields = ['shipping_full_name', 'shipping_email', 'shipping_address1', 'shipping_address2',
                     'shipping_city', 'shipping_state', 'shipping_zipcode', 'shipping_country']
-
+		
 		exclude = ['user',]
+
+
+
 
 
 class PaymentForm(forms.Form):
@@ -48,6 +54,7 @@ class PaymentForm(forms.Form):
 	card_zipcode = forms.CharField(label="", widget=forms.TextInput(
 		attrs={'class': 'form-control', 'placeholder': 'Billing Zipcode'}), required=True)
 	card_country =  forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Billing Country'}), required=True)
-class Meta:
-        model = Order
-        fields = ['payment_method'] 
+
+
+
+# Include all fields you want in the form

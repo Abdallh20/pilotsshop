@@ -8,19 +8,14 @@ from store.models import product, Profile
 import datetime
 # Create your views here.
 
+# views.py
 
 
-def create_order(request):
-    if request.method == 'POST':
-        formship = PaymentForm(request.POST)
-        if formship.is_valid():
-            formship.save()
-            # Redirect to a success page or do something else
-            return redirect('order_success')
-    else:
-        formship = PaymentForm()
 
-    return render(request, 'create_order.html', {'form': formship})
+
+
+def order_success(request):
+    return render(request, 'order_success.html')
 
 
 def orders(request, pk):
@@ -38,7 +33,7 @@ def orders(request, pk):
 				order = Order.objects.filter(id=pk)
 				# Update the status
 				now = datetime.datetime.now()
-				order.update(shipped=True, date_shipped=now)
+				order.update(shipped=True, date_shipped=now,payment='choose')
 			else:
 				# Get the order
 				order = Order.objects.filter(id=pk)
@@ -245,9 +240,13 @@ def checkout(request):
 	cart_products = cart.get_prods
 	quantities = cart.get_quants
 	totals = cart.cart_total()
+	
+	
 	if request.user.is_authenticated:
-
+		
 		shipping_user = ShippingAddress.objects.filter(user__id=request.user.id).first()
+		shipping_user.save()
+	
 
 		shipping_form = ShippingForm(request.POST or None, instance=shipping_user)
 		return render(request, "checkout.html", {"cart_products": cart_products, "quantities": quantities, "totals": totals, "shipping_form": shipping_form})
