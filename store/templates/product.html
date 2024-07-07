@@ -53,6 +53,19 @@
                             </div>
                         </div>
                         <br /><br />
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-2">Size:</div>
+                                                    <div class="col-md-2">
+                                                        <select class="form-select form-select-sm" id="qty-cart">
+                                                            <option value="Medium">Medium</option>
+                                                            <option value="Large">Large</option>
+                                                            <option value="XLarge">XLarge</option>
+                                                            <option value="XXLarge">XXLarge</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <br>
                         <a href="{% url 'index'%}" class="btn btn-secondary">Home</a>
                         <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Add To
                             Cart</button>
