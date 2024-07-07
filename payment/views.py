@@ -8,6 +8,25 @@ from store.models import product, Profile
 import datetime
 # Create your views here.
 
+# views.py
+
+from django.shortcuts import render, redirect
+from .models import Order
+from .forms import OrderForm
+
+
+def create_order(request):
+    if request.method == 'POST':
+        formship = OrderForm(request.POST)
+        if formship.is_valid():
+            formship.save()
+            # Redirect to a success page or do something else
+            return redirect('order_success')
+    else:
+        formship = OrderForm()
+
+    return render(request, 'create_order.html', {'form': formship})
+
 
 def orders(request, pk):
 	if request.user.is_authenticated and request.user.is_superuser:

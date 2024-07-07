@@ -1,5 +1,5 @@
 from django import forms
-from .models import ShippingAddress
+from .models import ShippingAddress,Order
 
 
 class ShippingForm(forms.ModelForm):
@@ -48,3 +48,11 @@ class PaymentForm(forms.Form):
 	card_zipcode = forms.CharField(label="", widget=forms.TextInput(
 		attrs={'class': 'form-control', 'placeholder': 'Billing Zipcode'}), required=True)
 	card_country =  forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Billing Country'}), required=True)
+
+	# forms.py
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['order_number', 'total_amount', 'payment_method', 'status']  # Include all fields you want in the form

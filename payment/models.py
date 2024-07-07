@@ -51,6 +51,9 @@ class Order(models.Model):
 	date_ordered = models.DateTimeField(auto_now_add=True)
 	shipped = models.BooleanField(default=False)
 	date_shipped = models.DateTimeField(blank=True, null=True)
+	payment= models.CharField(max_length=20,default='cod')
+
+	
 
 	def __str__(self):
 		return f'Order - {str(self.id)}'
