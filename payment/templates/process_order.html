@@ -23,9 +23,9 @@
                     {% for product in cart_products %}
                     {{ product.name }}:
                     {% if product.is_sale %}
-                    ${{ product.sale_price }}
+                    {{ product.sale_price }}.LE
                     {% else %}
-                    ${{ product.price }}
+                    {{ product.price }}.LE
                     {% endif %}
 
                     <br />
