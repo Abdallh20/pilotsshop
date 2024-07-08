@@ -1,4 +1,5 @@
 from store.models import product,Profile
+from django.shortcuts import render
 class Cart():
 	def __init__(self, request):
 		self.session = request.session
@@ -12,6 +13,7 @@ class Cart():
 			cart = self.session['session_key'] = {}
 		# Make sure cart is available on all pages of site
 		self.cart = cart
+		
 		
 	def db_add(self, product, quantity):
 		product_id = str(product)

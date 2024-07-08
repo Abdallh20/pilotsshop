@@ -70,6 +70,18 @@
                             </div>
                         </div>
                         <br /><br />
+                    
+                            <form method="post">
+                                {% csrf_token %}
+                                <label for="size">Size:</label>
+                                <select name="size" id="size">
+                                    {% for size in sizes %}
+                                    <option value="{{ size1 }}">{{ size1 }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br><br>
+                                <input type="submit" value="Submit">
+                            </form>
                         <a href="{% url 'index'%}" class="btn btn-secondary">Home</a>
                         <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Update</button>
                         <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Remove</button>

@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 
-
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	date_modified = models.DateTimeField(User, auto_now=True)
@@ -38,6 +37,7 @@ class Category(models.Model):
         return self.name
 
 
+
 class product(models.Model):
     name = models.CharField(max_length=200, default='any_name')
     description = models.TextField(max_length=100, default='this product made by pilot company for kids wear hope u enjoy in our site ')
@@ -46,7 +46,7 @@ class product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=1)
     image = models.ImageField(upload_to='photos/%y/%m/%d')
     is_sale = models.BooleanField(default=False)
-    sale_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    sale_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)	
     def __str__(self):
         return self.name
 

@@ -23,10 +23,10 @@ def cart_add(request):
 		# Get stuff
 		product_id = int(request.POST.get('product_id'))
 		product_qty = int(request.POST.get('product_qty'))
+		
 
 		# lookup product in DB
 		Product = get_object_or_404(product, id=product_id)
-
 		# Save to session
 		cart.add(product=Product, quantity=product_qty)
 

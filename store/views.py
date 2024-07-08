@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .models import product, Category, Profile
 from django.contrib.auth import authenticate, login, logout
@@ -13,6 +14,11 @@ from django import forms
 from django.db.models import Q
 import json
 from cart.cart import Cart
+
+
+
+
+
 
 
 def search(request):
